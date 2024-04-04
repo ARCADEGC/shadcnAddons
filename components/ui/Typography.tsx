@@ -9,15 +9,15 @@ type VariantKey =
     | "h3"
     | "h4"
     | "p"
-    | "anchor"
     | "blockquote"
+    | "table"
     | "list"
     | "code"
-    | "large"
-    | "table"
     | "lead"
+    | "large"
+    | "small"
     | "muted"
-    | "small";
+    | "anchor";
 
 const typographyVariants = cva("", {
     variants: {
@@ -27,15 +27,15 @@ const typographyVariants = cva("", {
             h3: "scroll-m-20 text-2xl font-semibold tracking-tight",
             h4: "scroll-m-20 text-xl font-semibold tracking-tight",
             p: "leading-7 [&:not(:first-child)]:mt-6",
-            anchor: "font-medium text-primary underline underline-offset-4",
             blockquote: "mt-6 border-l-2 pl-6 italic",
+            table: "w-full [&_td]:border [&_td]:px-4 [&_td]:py-2 [&_td]:text-left [&_td]:[&[align=center]]:text-center [&_td]:[&[align=right]]:text-right [&_th]:border [&_th]:px-4 [&_th]:py-2 [&_th]:text-left [&_th]:font-bold [&_th]:[&[align=center]]:text-center [&_th]:[&[align=right]]:text-right [&_tr]:m-0 [&_tr]:border-t [&_tr]:p-0 even:[&_tr]:bg-muted",
             list: "my-6 ml-6 list-disc [&>li]:mt-2",
             code: "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold",
-            table: "w-full [&_td]:border [&_td]:px-4 [&_td]:py-2 [&_td]:text-left [&_td]:[&[align=center]]:text-center [&_td]:[&[align=right]]:text-right [&_th]:border [&_th]:px-4 [&_th]:py-2 [&_th]:text-left [&_th]:font-bold [&_th]:[&[align=center]]:text-center [&_th]:[&[align=right]]:text-right [&_tr]:m-0 [&_tr]:border-t [&_tr]:p-0 even:[&_tr]:bg-muted",
-            large: "text-lg font-semibold",
             lead: "text-xl text-muted-foreground",
+            large: "text-lg font-semibold",
             small: "text-sm font-medium leading-none",
             muted: "text-sm text-muted-foreground",
+            anchor: "font-medium text-primary underline underline-offset-4",
         },
     },
 });
@@ -46,15 +46,15 @@ const variantToTag: Record<VariantKey, string> = {
     h3: "h3",
     h4: "h4",
     p: "p",
-    anchor: "a",
     blockquote: "blockquote",
+    table: "table",
     list: "ul",
     code: "code",
-    large: "div",
-    table: "table",
     lead: "p",
-    muted: "p",
+    large: "div",
     small: "p",
+    muted: "p",
+    anchor: "a",
 };
 
 interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
