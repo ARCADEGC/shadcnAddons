@@ -11,7 +11,7 @@
 ## How to use
 
 ```tsx
-<>
+<div>
     <Typography variant="h1">Level one heading</Typography>
     <Typography variant="h2">Level two heading</Typography>
     <Typography variant="h3">Level three heading</Typography>
@@ -51,7 +51,7 @@
             </tr>
         </tbody>
     </Typography>
-</>
+</div>
 ```
 
 ## How to Use
@@ -59,25 +59,25 @@
 ### Set as different tag
 
 ```tsx
-<>
+<div>
     <Typography
         variant="p"
         asChild
     >
         <h3>This level 3 heading will be styled as paragraph text.</h3>
     </Typography>
-</>
+</div>
 ```
 
 ### Limit number of lines (maxLines)
 
 ```tsx
-<>
+<div>
     <Typography
         variant="p"
         className="line-clamp-2"
     >
         This text will be cut after 2 lines and ... will be added at the end.
     </Typography>
-</>
+</div>
 ```
