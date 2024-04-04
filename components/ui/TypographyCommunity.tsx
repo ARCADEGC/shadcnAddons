@@ -14,10 +14,9 @@ type VariantKey =
     | "list"
     | "code"
     | "large"
-    | "table"
-    | "lead"
-    | "muted"
-    | "small";
+    | "table";
+
+type AffectsKey = "lead" | "muted" | "small" | "removePaddingMargin" | undefined;
 
 const typographyVariants = cva("", {
     variants: {
@@ -33,9 +32,12 @@ const typographyVariants = cva("", {
             code: "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold",
             table: "w-full [&_td]:border [&_td]:px-4 [&_td]:py-2 [&_td]:text-left [&_td]:[&[align=center]]:text-center [&_td]:[&[align=right]]:text-right [&_th]:border [&_th]:px-4 [&_th]:py-2 [&_th]:text-left [&_th]:font-bold [&_th]:[&[align=center]]:text-center [&_th]:[&[align=right]]:text-right [&_tr]:m-0 [&_tr]:border-t [&_tr]:p-0 even:[&_tr]:bg-muted",
             large: "text-lg font-semibold",
+        },
+        affects: {
             lead: "text-xl text-muted-foreground",
             small: "text-sm font-medium leading-none",
             muted: "text-sm text-muted-foreground",
+            removePaddingMargin: "[&:not(:first-child)]:mt-0",
         },
     },
 });
@@ -52,13 +54,11 @@ const variantToTag: Record<VariantKey, string> = {
     code: "code",
     large: "div",
     table: "table",
-    lead: "p",
-    muted: "p",
-    small: "p",
 };
 
 interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
     variant?: VariantKey;
+    affects?: AffectsKey;
     children: React.ReactNode;
     className?: string;
     asChild?: boolean;
@@ -67,7 +67,15 @@ interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
 
 const Typography = React.forwardRef<HTMLElement, TypographyProps>(
     (
-        { variant = "p", children, className, asChild = false, disableSelect = false, ...props },
+        {
+            variant = "p",
+            affects = undefined,
+            children,
+            className,
+            asChild = false,
+            disableSelect = false,
+            ...props
+        },
         ref,
     ) => {
         const Comp = asChild ? Slot : variantToTag[variant];
@@ -75,7 +83,7 @@ const Typography = React.forwardRef<HTMLElement, TypographyProps>(
         return (
             <Comp
                 className={cn(
-                    typographyVariants({ variant, className }),
+                    typographyVariants({ variant, affects, className }),
                     disableSelect ? "select-none" : "",
                 )}
                 ref={ref}

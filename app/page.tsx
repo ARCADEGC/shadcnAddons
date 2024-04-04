@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import { Typography } from "@/components/ui/Typography";
+import { Typography } from "@/components/ui/TypographyCommunity";
 
 export default function Home(): React.ReactElement {
     return (
