@@ -1,14 +1,14 @@
 import React from "react";
 import Link from "next/link";
 
-import { Typography } from "@/components/ui/TypographyCommunity";
+import { Typography } from "@/components/ui/TypographyAs";
 
 export default function Home(): React.ReactElement {
     return (
         <main className="mx-auto mb-20 mt-16 grid max-w-prose gap-4 [grid-column:content]">
             <Typography
                 variant="h1"
-                affects="small"
+                as="p"
             >
                 Level one heading
             </Typography>
@@ -27,10 +27,10 @@ export default function Home(): React.ReactElement {
                 <li>List item</li>
             </Typography>
             <Typography variant="code">Inline Code</Typography>
-            <Typography affects="lead">Lead Text</Typography>
-            <Typography affects="muted">Muted text</Typography>
+            <Typography variant="lead">Lead Text</Typography>
+            <Typography variant="muted">Muted text</Typography>
             <Typography variant="large">large text</Typography>
-            <Typography affects="small">small text</Typography>
+            <Typography variant="small">small text</Typography>
             <Typography variant="table">
                 <thead>
                     <tr>
